@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <title>21 Savage Fan Site</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-scissors"></span> Client cards</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3></span> Client Info</h3>
+
+                    <p>
+                        <strong>client name</strong>: <%= messages.firstName %> <%= messages.lastName %><br>
+                        <strong>Phone Number</strong>: <%= messages.phoneNumber %><br>
+                        <strong>stylist</strong>: <%= user.local.email %>
+                    </p>
+
+                   
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <h3>Client History</h3>
+          <ul class="messages">
+          <% for(var i=0; i<messages.length; i++) {%>
+            <li class="message">
+              <span><%= messages[i].date %></span>
+              <span><%= messages[i].msg %></span>
+              <span><i class="fa fa-check" aria-hidden="true"></i></span>
+              <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+              <span><%= messages[i].firstName %></span>
+              <span><%= messages[i].lastName %></span>
+              <span><%= messages[i].phoneNumber %></span>
+            </li>
+          <% } %>
+          </ul>
+
+          <h2>Add a client card</h2>
+        <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" placeholder="firstName" name="firstName">
+            <input type="text" placeholder="lastName" name="lastName">
+            <input type="text" placeholder="phoneNumber" name="phoneNumber">
+            <input type="date" placeholder="date" name="date">
+            <input type="text" value="<%= user.local.email %>" name="name">
+            <input type="text" placeholder="servce" name="msg">
+          
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
