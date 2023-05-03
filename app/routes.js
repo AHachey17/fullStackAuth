@@ -39,7 +39,7 @@ module.exports = function(app, passport, db) {
 
     app.put('/messages', (req, res) => {
       db.collection('messages')
-      .findOneAndUpdate({msg: req.body.msg, thumbUp: 0, firstName: req.body.firstName, lastName: req.body.lastName, phoneNumber: req.body.phoneNumber, date: req.body.date}, {
+      .findOneAndUpdate({msg: req.body.msg, date: req.body.date}, {
         $set: {
           completed:'completed'
         }
